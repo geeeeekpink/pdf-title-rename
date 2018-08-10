@@ -123,18 +123,18 @@ class RenamePDFsByTitle(object):
             info = self._get_metadata(pdf)
 
             if 'Title' in info:
-                ti = self._resolve_objref(info['Title'])
+                title = self._resolve_objref(info['Title'])
                 try:
-                    title = ti.decode('utf-8')
+                    title = title.decode('utf-8')
                 except AttributeError:
                     pass
                 except UnicodeDecodeError:
                     print(' -- Could not decode title bytes: %r' % ti)
 
             if 'Author' in info:
-                au = self._resolve_objref(info['Author'])
+                author = self._resolve_objref(info['Author'])
                 try:
-                    author = au.decode('utf-8')
+                    author = author.decode('utf-8')
                 except AttributeError:
                     pass
                 except UnicodeDecodeError:
@@ -190,6 +190,8 @@ class RenamePDFsByTitle(object):
         except PDFSyntaxError:
             return {}
         parser.set_document(doc)
+        doc.set_parser(parser)
+        print('=====doc.info=====',doc.info)
 
         if not hasattr(doc, 'info') or len(doc.info) == 0:
             return {}
