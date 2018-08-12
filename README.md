@@ -25,14 +25,12 @@ To use the script, simply pass in a list or glob of PDF filenames. If you want t
 
 This script is intended as a first pass in an academic PDF workflow to get browsable filenames for a pile of articles that have been downloaded but not yet filed away.
 
-## Requirements
-
-The PDF parsing uses [PDFMiner](https://github.com/euske/pdfminer/). The XMP parsing uses [this xmp module](http://blog.matt-swain.com/post/25650072381/a-lightweight-xmp-parser-for-extracting-pdf-metadata-in). Important: For XMP parsing to work, you will need to copy the code from that link to an `xmp.py` file and put it on your `PYTHONPATH`. (Note, I've now included `xmp.py` in the repo in case that link goes away; you still have to put it on your path.)
+- Requirements
 
  * [PDFMiner](https://github.com/euske/pdfminer/)
  * [xmp](http://blog.matt-swain.com/post/25650072381/a-lightweight-xmp-parser-for-extracting-pdf-metadata-in)
 
-## PDF重命名中文解析
+## PDF重命名.py 中文解析
 
 上面是原版英文README,这里解析一下：
 需要前提安装的插件有`PDFMiner`和`xmp`,最新版的`PDFMiner`包含`pdf2txt.py`,安装完将拷贝所有py文件到PYTHONPATH目录下,没有的话拷贝到python安装目录,我这里是安装anaconda所以
@@ -49,6 +47,8 @@ pdf2txt.py
 
 ## 批量重命名(推荐)
 
+[2018.8.12] 更新添加中文支持，后期预计添加txt,word文档等重命名
+
 pdf-title-rename-batch
 ----------------
 
@@ -61,6 +61,8 @@ Usage:
     find . -name "*.pdf" |  xargs -I{} pdf-title-rename-batch.py -d tmp --rename {}
 
     单个文件使用: pdf-title-rename-batch.py --rename TEST.pdf
+
+    或者 pdf-title-rename-batch.py TEST.pdf
 
 That's all,enjoy.
 
